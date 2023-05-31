@@ -2,7 +2,7 @@
 
 ## Brainstorming an Abstract & Features
 
-The idea is to use LLM agents for:
+The idea is to use LLM agents<->Theorem provers pipeline for:
 
 - **AI-assisted Proof Generation & Interpretation:**
     - allow users to input natural language proofs, which are then processed by a Middleware/Backend service that interfaces the AI agent with the Theorem Prover agent.
