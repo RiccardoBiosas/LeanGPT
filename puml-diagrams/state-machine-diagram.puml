@@ -1,0 +1,22 @@
+@startuml
+[*] --> Idle
+
+state Idle {
+  [*] --> IdleState
+  IdleState --> ProcessInput : User Input
+}
+
+state ProcessInput {
+  ProcessInput --> PerformProofSearch : Relevant Information
+}
+
+state PerformProofSearch {
+  PerformProofSearch --> FormatProof : Encoded Mathematical\nDefinitions, Theorems\nand Proof-Search Task
+}
+
+state FormatProof {
+  FormatProof --> IdleState : Formatted Proof
+}
+
+@enduml
+
