@@ -22,21 +22,24 @@ The idea is to use LLM agents<->Theorem provers pipeline for:
 ```mermaid
 sequenceDiagram
   participant User as user
-  participant "AI Agent" as openai_api
-  participant "Backend Integration" as backend
-  participant "Theorem Prover" as lean_theorem_prover
-
-  user ->> openai_api: User Input
-  openai_api -->> backend: User Input
-  backend ->> backend: Relevant Information
-  backend ->> lean_theorem_prover: Encoded Mathematical\nDefinitions, Theorems\nand Proof-Search Task
-  lean_theorem_prover -->> backend: Perform Proof-Search\nand Reasoning
-  backend -->> backend: Formatted Proof
-  backend -->> openai_api: Response with Proof
-  openai_api -->> user: Generated Response
+  participant AI Agent as ai-agent
+  participant Middleware as middleware
+  participant Theorem Prover as theorem-prover
 ```
 
-Just for starters, the **AI agent** is GPT3, the **Theorem Prover** agent is the Lean theorem prover - if the experiment is successful in the future I will try to plug [COQ](https://coq.inria.fr/). The backend/middleware entity might be a basic flask API (TBD), but it could be replaced later with Langchain to experiment with interoperability.
+```mermaid
+sequenceDiagram
+  user ->> ai-agent: User Input
+  ai-agent -->> middleware: User Input
+  middleware ->> middleware: Relevant Information
+  middleware ->> theorem-prover: Encoded Mathematical Definitions, Theorems & Proof-Search Task
+  theorem-prover -->> middleware: Perform Proof-Search & Reasoning
+  middleware -->> middleware: Formatted Proof
+  middleware -->> ai-agent: Response with Proof
+  ai-agent -->> user: Generated Response
+```
+
+Just for starters, the **AI agent** is GPT3, the **Theorem Prover** entity is the Lean theorem prover - if the experiment is successful in the future I will try to plug [COQ](https://coq.inria.fr/). The backend/middleware entity might be a basic flask API (TBD), but it could be replaced later with Langchain to experiment with interoperability.
 
 ## State Machine Diagram
 
