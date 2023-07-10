@@ -39,7 +39,7 @@ sequenceDiagram
   ai-agent -->> user: Generated Response
 ```
 
-Just for starters, the **AI agent** is GPT3, the **Theorem Prover** entity is the Lean theorem prover - if the experiment is successful in the future I will try to plug [COQ](https://coq.inria.fr/). The backend/middleware entity might be a basic flask API (TBD), but it could be replaced later with Langchain to experiment with interoperability.
+Just for starters, the **AI agent** is GPT3, the **Theorem Prover** entity are COQ and the Lean theorem prover. The backend/middleware entity might be a basic flask API (TBD), but it could be replaced later with Langchain to experiment with interoperability.
 
 ## State Machine Diagram
 
